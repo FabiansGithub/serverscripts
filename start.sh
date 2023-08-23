@@ -2,7 +2,7 @@
 
 # Allgemeine Abfrage
 
-if [ ! -f ~/start ]; then
+if [ ! -f ~/start.sh ]; then
 
     echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
     read -n 1 -s choice
