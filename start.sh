@@ -4,12 +4,13 @@
 
 if [ ! -f ~/start ]; then
 
-    echo "Möchten Sie das Wartungsscript erneut herunterladen / aktualisieren? [y/N]"
+    echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
     read -n 1 -s choice
         if [ "$choice" == "y" ];  then
         curl -o start.sh https://github.com/FabiansGithub/serverscripts/raw/main/start.sh
-        bash start.sh
+        echo "Bitte geben Sie bash start.sh ein, um das Script zu starten."
         fi
+        exit
 else
 
 # Funktion zum Deaktivieren von Cockpit
