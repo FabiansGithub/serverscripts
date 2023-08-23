@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Allgemeine Abfrage
+
+if [ ! -f ~/start ]; then
+
+    echo "Möchten Sie das Wartungsscript erneut herunterladen / aktualisieren? [y/N]"
+    read -n 1 -s choice
+        if [ "$choice" == "y" ];  then
+        curl https://github.com/FabiansGithub/serverscripts/raw/main/start.sh
+        bash start.sh
+        fi
+else
+
 # Funktion zum Deaktivieren von Cockpit
 disable_cockpit() {
     read -p "Möchten Sie Cockpit DEaktivieren? (j/n): " choice
@@ -64,3 +76,4 @@ echo "Eingabe-Taste bedeutet NEIN."
 start_server
 echo "Start-Programm wurde erfolgreich abgeschlossen."
 
+exit
