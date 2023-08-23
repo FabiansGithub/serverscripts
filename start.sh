@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Allgemeine Abfrage
-
-if [ -f ~/start.sh ]; then
-
-    echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
-    read -n 1 -s choice
-        if [ "$choice" == "y" ];  then
-        wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
-        echo "Bitte geben Sie bash start.sh ein, um das Script zu starten."
-        else
-
 # Funktion zum Deaktivieren von Cockpit
 disable_cockpit() {
     read -p "Möchten Sie Cockpit DEaktivieren? (j/n): " choice
@@ -61,7 +50,7 @@ updaterun_rkhunter() {
     fi
 }
 
-# Hauptfunktion zur Einrichtung des Servers
+# Hauptfunktion
 start_server() {
     disable_cockpit
     enable_cockpit
@@ -72,6 +61,18 @@ start_server() {
 # Hauptprogramm
 echo "Start-Programm wird gestartet..."
 echo "Eingabe-Taste bedeutet NEIN."
-start_server
+
+# Datei-Abfrage
+
+if [ -f ~/start.sh ]; then
+
+    echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
+    read -n 1 -s choice
+        if [ "$choice" == "y" ];  then
+        wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
+        echo "Bitte geben Sie bash start.sh ein, um das Script zu starten."
+        else
+        start_server
+        fi
 echo "Start-Programm wurde erfolgreich abgeschlossen."
 fi
