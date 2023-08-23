@@ -9,8 +9,8 @@ if [ -f ~/start.sh ]; then
         if [ "$choice" == "y" ];  then
         wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
         echo "Bitte geben Sie bash start.sh ein, um das Script zu starten."
-        fi
         exit
+        fi  
 else
 
 # Funktion zum Deaktivieren von Cockpit
