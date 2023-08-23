@@ -76,5 +76,4 @@ echo "Start-Programm wird gestartet..."
 echo "Eingabe-Taste bedeutet NEIN."
 start_server
 echo "Start-Programm wurde erfolgreich abgeschlossen."
-
-exit
+fi
