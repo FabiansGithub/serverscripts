@@ -7,7 +7,7 @@ if [ ! -f ~/start.sh ]; then
     echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
     read -n 1 -s choice
         if [ "$choice" == "y" ];  then
-        curl -o start.sh https://github.com/FabiansGithub/serverscripts/raw/main/start.sh
+        wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
         echo "Bitte geben Sie bash start.sh ein, um das Script zu starten."
         fi
         exit
