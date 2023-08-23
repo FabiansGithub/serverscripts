@@ -7,7 +7,7 @@ if [ ! -f ~/start ]; then
     echo "Möchten Sie das Wartungsscript erneut herunterladen / aktualisieren? [y/N]"
     read -n 1 -s choice
         if [ "$choice" == "y" ];  then
-        curl https://github.com/FabiansGithub/serverscripts/raw/main/start.sh
+        curl -o start.sh https://github.com/FabiansGithub/serverscripts/raw/main/start.sh
         bash start.sh
         fi
 else
