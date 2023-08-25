@@ -66,7 +66,7 @@ echo "Eingabe-Taste bedeutet NEIN."
 
 if [ -f ~/start.sh ]; then
 
-    echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
+    echo "Möchten Sie das Wartungsscript aktualisieren? [y/n]"
     read -n 1 -s choice
         if [ "$choice" == "y" ];  then
         wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
@@ -74,5 +74,7 @@ if [ -f ~/start.sh ]; then
         else
         start_server
         fi
+echo "Ist OpenSSH aktualisiert worden (>8.9p1)?"
+ssh -V
 echo "Start-Programm wurde erfolgreich abgeschlossen."
 fi
