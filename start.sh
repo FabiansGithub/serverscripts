@@ -2,10 +2,10 @@
 
 # Funktion zum Deaktivieren von Cockpit
 disable_cockpit() {
-    read -p "Möchten Sie Cockpit DEaktivieren? (j/n): " choice
-    if [ "$choice" == "j" ]; then
+    read -p "Möchten Sie Cockpit DEaktivieren? (y/N): " choice
+    if [ "$choice" == "y" ]; then
         echo "Deaktiviere Cockpit..."
-        pitstop
+        systemctl stop cockpit.socket
         echo "Cockpit wurde deaktiviert."
     else
         echo "Keine Änderung."
@@ -14,8 +14,8 @@ disable_cockpit() {
 
 # Funktion zum Aktivieren von Cockpit
 enable_cockpit() {
-    read -p "Möchten Sie die Cockpit aktivieren? (j/n): " choice
-    if [ "$choice" == "j" ]; then
+    read -p "Möchten Sie die Cockpit aktivieren? (y/N): " choice
+    if [ "$choice" == "y" ]; then
         echo "Aktiviere Cockpit..."
         systemctl enable --now cockpit.socket
         echo "Cockpit wurde aktiviert."
@@ -26,8 +26,8 @@ enable_cockpit() {
 
 # Funktion zum Aktualisieren von Paketen
 update_packages() {
-    read -p "Möchten Sie die Paketaktualisierungen durchführen? (j/n): " choice
-    if [ "$choice" == "j" ]; then
+    read -p "Möchten Sie die Paketaktualisierungen durchführen? (y/N): " choice
+    if [ "$choice" == "y" ]; then
         echo "Aktualisiere Paketlisten und installiere Updates..."
         apt update && apt upgrade -y && apt dist-upgrade -y && apt autoremove -y
         echo "Paketaktualisierungen wurden durchgeführt."
@@ -38,8 +38,8 @@ update_packages() {
 
 # Funktion zum Update und Ausführen von rkhunter (Tool zur Erkennung von Eindringlingen)
 updaterun_rkhunter() {
-    read -p "Möchten Sie rkhunter aktualieren und ausführen? (j/n): " choice
-    if [ "$choice" == "j" ]; then
+    read -p "Möchten Sie rkhunter aktualieren und ausführen? (y/N): " choice
+    if [ "$choice" == "y" ]; then
         echo "Update rkhunter..."
         rkhunter --update
         echo "Ausführen rkhunter..."
@@ -66,7 +66,7 @@ echo "Eingabe-Taste bedeutet NEIN."
 
 if [ -f ~/start.sh ]; then
 
-    echo "Möchten Sie das Wartungsscript aktualisieren? [y/n]"
+    echo "Möchten Sie das Wartungsscript aktualisieren? [y/N]"
     read -n 1 -s choice
         if [ "$choice" == "y" ];  then
         wget https://github.com/FabiansGithub/serverscripts/raw/main/start.sh -O start.sh
